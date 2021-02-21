@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 
+<!-- Demonstrates CSS classes -->
+
 <html lang="en">
     <head>
-        <script>
+        <style>
 
-            function greet()
+            .centered
             {
-                alert('hello, ' + document.querySelector('#name').value);
+                text-align: center;
             }
 
-        </script>
-        <title>hello</title>
+            .large
+            {
+                font-size: large;
+            }
+
+            .medium
+            {
+                font-size: medium;
+            }
+
+            .small
+            {
+                font-size: small;
+            }
+
+        </style>
+        <title>css</title>
     </head>
-    <body>
-        <form onsubmit="greet(); return false;">
-            <input autocomplete="off" autofocus id="name" placeholder="Name" type="text">
-            <input type="submit">
-        </form>
+    <body class="centered">
+        <header class="large">
+            Anurag Bhatt
+        </header>
+        <main class="medium">
+            Welcome to my home page!
+        </main>
+        <footer class="small">
+            Copyright &#169; Anurag Bhatt
+        </footer>
     </body>
 </html>
