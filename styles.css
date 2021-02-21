@@ -1,39 +1,42 @@
-.centered
-{
+.centered {
     text-align: center;
 }
 
-.large
-{
-    font-size: large;
+.large {
+    font-size: xx-large;
 }
 
-.medium
-{
+.medium {
     font-size: medium;
 }
 
-.small
-{
+.small {
     font-size: small;
 }
 
-#github
-{
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#github {
     color: #ff0000;
 }
 
-#wordpress
-{
+#wordpress {
     color: #0000ff;
 }
 
-a
-{
+a {
     text-decoration: none;
 }
 
-a:hover
-{
+a:hover {
     text-decoration: underline;
 }
