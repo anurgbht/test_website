@@ -1,71 +1,68 @@
 <!DOCTYPE html>
-
-<!-- Sample homepage to learn Web Development -->
-
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8" />
-    <title>Home Page, Anurag Bhatt</title>
+    <title>
+        JavaScript | Sending JSON data to server.
+    </title>
+    <script>
+        function sendJSON() {
 
-    <link href="styles.css" rel="stylesheet">
-    <script type="text/javascript" src="scripts.js"></script>
-    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+            let result = document.querySelector('.result');
+            let name = document.querySelector('#name');
+            let email = document.querySelector('#email');
+
+            // Creating a XHR object 
+            let xhr = new XMLHttpRequest();
+            let url = "submit.php";
+
+            // open a connection 
+            xhr.open("POST", url, true);
+
+            // Set the request header i.e. which type of content you are sending 
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // Create a state change callback 
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+
+                    // Print received data from server 
+                    result.innerHTML = this.responseText;
+
+                }
+            };
+
+            // Converting JSON data to string 
+            var data = JSON.stringify({ "name": name.value, "email": email.value });
+            alert(data)
+
+            // Sending data with the request 
+            xhr.send(data);
+        }
+
+    </script>
 </head>
 
-<body class="centered">
-    <header class="large">
-        Anurag Bhatt
-    </header>
-    <hr>
-    <main class="medium">
-        Welcome to my home page!
-        <div class="row">
-            <div class='column'>
-                <p>
-                    Visit <a href="https://github.com/anurgbht" id="github">GitHub Account</a>.
-                </p>
+<body style="text-align:center;" id="body">
+    <h1 style="color:green;">
+        GeeksForGeeks
+    </h1>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pulvinar sagittis sagittis.
-                    Morbi vulputate convallis nisl non venenatis. Ut sit amet ex vitae tortor sodales aliquam. Nam at
-                    tellus non nunc tincidunt cursus. Vestibulum porttitor facilisis sapien et rhoncus. Sed ultrices
-                    porta nisi non tempor. Duis ut molestie est. Cras nec nibh eget erat dapibus fringilla. Ut tempor
-                    aliquet magna, in viverra tellus. Maecenas molestie purus id neque lacinia vestibulum nec ac ligula.
-                    Duis dictum facilisis lectus, vel tincidunt orci varius nec. Suspendisse fermentum dui augue, ut
-                    aliquet ligula porttitor eget. Nullam elementum lacus mattis, dictum felis vel, pulvinar justo.
-                    Integer sit amet diam sit amet ante ullamcorper facilisis ac sed neque. Maecenas eleifend velit
-                    vitae augue lacinia pellentesque. Sed aliquam, lacus ultrices ullamcorper auctor, odio orci
-                    dignissim nunc, quis viverra erat est sit amet magna.
-                </p>
-            </div>
+    <p>
+        <!-- Making a text input -->
+        <input type="text" id="name" placeholder="Your name">
+        <input type="email" id="email" placeholder="Email">
 
-            <div class='column'>
-                <p>
-                    Visit <a href="https://anuraagbhatt.wordpress.com/" id="wordpress">WordPress Account</a>.
-                </p>
-                <p>
-                    Pellentesque condimentum eros ac turpis cursus imperdiet. Aenean bibendum euismod auctor. Nullam
-                    vitae venenatis nisl, vel tempus nibh. Vestibulum tempus at quam ac pulvinar. Sed eu justo a eros
-                    commodo faucibus vel vel sem. Morbi pulvinar, purus at maximus vulputate, felis tellus congue nisl,
-                    nec porttitor mauris orci eu velit. Curabitur vitae felis vel orci bibendum rhoncus. Morbi vitae
-                    convallis felis. Fusce nec sagittis lacus, laoreet hendrerit est. Duis hendrerit pulvinar quam, sed
-                    facilisis odio hendrerit non. Fusce euismod erat lacus, non congue neque faucibus gravida. Sed
-                    euismod odio ac est aliquet ultrices. Fusce at enim ac erat vulputate bibendum ut maximus odio. Sed
-                    id nibh eros. Sed ut felis felis. In ullamcorper ante non molestie blandit.
-                </p>
-            </div>
-    </main>
-    <hr>
+        <!-- Button to send data -->
+        <button onclick="sendJSON()">Send JSON</button>
 
-    <div class="machine-info">
-        <form onsubmit="getMachineInfo(); return false;">
-            <input type="submit" value="Find your system information">
-        </form>
-    </div>
-    <footer class="small">
-        Copyright &#169; Anurag Bhatt
-    </footer>
+        <!-- For printing result from server -->
+    <p class="result" style="color:green"></p>
+
+    </p>
+
+    <!-- Include the JavaScript file -->
+    <script src="index.js"></script>
 
 </body>
 
